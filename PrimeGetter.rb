@@ -1,16 +1,29 @@
 class PrimeGetter
-  def self.prime_not_upper_than(n)
-    unless n.is_a? Integer
-      puts "n must be an integer."
+  attr_accessor :upbound
+
+  def initialize(upbound)
+    @upbound = upbound
+    @primes = [2]
+    @num = 3
+  end
+
+  def prime_not_upper_than()
+    unless @upbound.is_a? Integer
+      puts "upper bound must be an integer."
       return nil
     end
-    if n < 0
-      puts "n must be greater than 0."
+
+    if @upbound < 0
+      puts "upper bound must be greater than 0."
       return nil
     end
-    ar = [2]
-    i = 3
-    while (i < n) do
+
+    while (@num < @upper_bound) do
+      if prime?
+      end
+
+      @num = @num + 1
+
       ip = true
       ar.each do |a|
         if (i % a == 0)
@@ -24,13 +37,15 @@ class PrimeGetter
         ar.push(i)
       end
       i = i+1
-    end 
-    return ar
+    end
+
+    return @primes
   end
 
 end
 
 if __FILE__ == $0
+  prime = PrimeGetter.new(ARGV[0].to_i)
   puts PrimeGetter.prime_not_upper_than(ARGV[0].to_i)
 end
 
